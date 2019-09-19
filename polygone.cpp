@@ -17,18 +17,24 @@ double Polygone::aire() const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {
-	// À compléter.
-	os << "A : (0,0), (0,1), (1,1) ;";
+	os << polygone.nom << " : ";
+	for (int i = 0; i < polygone.sommets.taille()-1; i += 1)
+		os << polygone.sommets[i] << ", ";
+	os << polygone.sommets[polygone.sommets.taille()-1] << std::endl;
 	return os;
 }
 
 std::istream& operator>>(std::istream& in, Polygone& polygone) {
-	// À compléter­.
+	polygone.sommets.vider();
+	in >> polygone.nom >> std::ws;
 	char c;
-	do{
+	in >> c >> std::ws;
+	assert(c == ':');
+	do {
 		Point p;
 		in >> p >> c >> std::ws;
-	}while(c==',');
-	assert(c==';');
+		polygone.sommets.ajouter(p);
+	} while (c == ',');
+	assert(c == ';');
 	return in;
 }
