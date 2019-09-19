@@ -1,7 +1,7 @@
 /*
-  INF3105 -- Structures de données et algorithmes
-  UQAM | Département d'informatique
-  Automne 2019 | TP1 | point.cpp
+	INF3105 -- Structures de données et algorithmes
+	UQAM | Département d'informatique
+	Automne 2019 | TP1 | point.cpp
 */
 
 #include <assert.h>
@@ -25,7 +25,7 @@ std::istream& operator>>(std::istream& is, Point& point) {
 	char po, vir, pf;
 	is >> po;
 	if (is) {
-    	is >> point.x >> vir >> point.y >> pf;
+		is >> point.x >> vir >> point.y >> pf;
 		assert(po=='(');
 		assert(vir==',');
 		assert(pf==')');
