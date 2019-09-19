@@ -24,10 +24,10 @@ class Tableau {
 		void			enlever_dernier();
 		int				trouver(const T& element) const;
 		bool			contient(const T& element) const;
-		T&				operator[] (int index);
-		const T&		operator[] (int index) const;
-		Tableau<T>&		operator = (const Tableau<T>& autre);
-		bool			operator == (const Tableau<T>& autre) const;
+		T&				operator[](int index);
+		const T&		operator[](int index) const;
+		Tableau<T>&		operator=(const Tableau<T>& autre);
+		bool			operator==(const Tableau<T>& autre) const;
 	private:
 		T*				elements;
 		int				capacite;
@@ -174,7 +174,7 @@ Tableau<T>& Tableau<T>::operator = (const Tableau<T>& autre){
 }
 
 template <class T>
-bool Tableau<T>::operator == (const Tableau<T>& autre) const{
+bool Tableau<T>::operator==(const Tableau<T>& autre) const {
     if(this == &autre) return true;
     if(nbElements != autre.nbElements) return false;
     for(int i=0;i<nbElements;i++)
