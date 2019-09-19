@@ -15,29 +15,28 @@
 using namespace std;
 
 int main(int argc, const char** argv) {
-	if (argc<3) {
+	if (argc < 3) {
 		cout << "./tp1 carte.txt nbRegions [distMax]" << endl;
 		return 1;
 	}
 
-	const char* fichiercarte = argv[1];
+	const char* fichierCarte = argv[1];
 	int nbRegions = atoi(argv[2]);
-	double DM = argc>=4 ? atof(argv[3]) : numeric_limits<double>::infinity();
-	assert(DM>=0);
+	double DM = argc >= 4 ? atof(argv[3]) : numeric_limits<double>::infinity();
+	assert(DM >= 0);
 
-	ifstream in(fichiercarte);
+	ifstream in(fichierCarte);
 	if (in.fail()) {
-		cout << "Imposible de lire le fichier " << fichiercarte << endl;
+		cout << "Imposible de lire le fichier " << fichierCarte << endl;
 		return 2;
 	}
 
+	Tableau<Polygone> territoires;
 	while (!in.eof()) {
 		string nom;
 		Polygone polygone;
-		char deuxpoints;
-		in >> nom >> deuxpoints;
-		assert(deuxpoints==':');
 		in >> polygone >> std::ws;
+		territoires.ajouter(polygone);
 	}
 
 	switch (nbRegions) {
@@ -58,5 +57,6 @@ int main(int argc, const char** argv) {
 			cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
 			break;
 	}
+
 	return 0;
 }
