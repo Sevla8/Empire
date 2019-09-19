@@ -1,48 +1,38 @@
 /*
   INF3105 -- Structures de données et algorithmes
   UQAM | Département d'informatique
-  Automne 2019 | TP1 | tableau.h 
+  Automne 2019 | TP1 | tableau.h
 */
 
 // Ces deux lignes permettent d'éviter d'inclure 2 fois ce .h à la compilation.
-#if !defined(__TABLEAU_H__)
+#ifndef __TABLEAU_H__
 #define __TABLEAU_H__
 
-
 template <class T>
-class Tableau
-{
-  public:
-    Tableau(int capacite_initiale=8);
-    Tableau(const Tableau&);
-    ~Tableau();
-
-    void           ajouter(const T& element); // à la fin
-    //void           inserer_fin(const T& element){ajouter(element);}
-    bool           vide() const {return nbElements==0;}
-    void           vider();
-    int            taille() const {return nbElements;}
-
-    void           inserer(const T& element, int index=0);
-    void           enlever(int index=0);
-    void           enlever_dernier();
-    int            trouver(const T& element) const;
-    bool           contient(const T& element) const;
-
-    T&	           operator[] (int index);
-    const T&       operator[] (int index) const;
-
-
-    Tableau<T>&    operator = (const Tableau<T>& autre);
-    
-    bool           operator == (const Tableau<T>& autre) const;
-
-  private:
-    T*             elements;
-    int            capacite;
-    int            nbElements;
-    
-  //friend void trier<T>(Tableau<T>& tab);
+class Tableau {
+	public:
+						Tableau(int capacite_initiale=8);
+						Tableau(const Tableau&);
+						~Tableau();
+		void			ajouter(const T& element); // à la fin
+		//void			inserer_fin(const T& element){ajouter(element);}
+		bool			vide() const {return nbElements==0;}
+		void			vider();
+		int				taille() const {return nbElements;}
+		void			inserer(const T& element, int index=0);
+		void			enlever(int index=0);
+		void			enlever_dernier();
+		int				trouver(const T& element) const;
+		bool			contient(const T& element) const;
+		T&				operator[] (int index);
+		const T&		operator[] (int index) const;
+		Tableau<T>&		operator = (const Tableau<T>& autre);
+		bool			operator == (const Tableau<T>& autre) const;
+	private:
+		T*				elements;
+		int				capacite;
+		int				nbElements;
+	//friend void trier<T>(Tableau<T>& tab);
 };
 
 
@@ -179,7 +169,7 @@ Tableau<T>& Tableau<T>::operator = (const Tableau<T>& autre){
         elements = new T[capacite];
     }
     for(int i=0;i<nbElements;i++)
-        elements[i] = autre.elements[i];  
+        elements[i] = autre.elements[i];
     return *this;
 }
 
@@ -202,4 +192,3 @@ void trier<T>(Tableau<T>& tab){
 */
 
 #endif
-
