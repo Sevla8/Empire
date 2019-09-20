@@ -19,7 +19,7 @@ class Tableau {
 		void			vider();									// Vider le tableau
 		int				taille() const;								// Retourne le nombre d'éléments dans le tableau
 		void			inserer(const T& element, int index = 0);	// Insère element à position index. Les éléments à partir de index sont décalés d'une position.
-		void			enlever(int index=0);						// Enlève l'element à position index. Les éléments après index sont décalés d'une position.
+		void			enlever(int index = 0);						// Enlève l'element à position index. Les éléments après index sont décalés d'une position.
 		void			enlever_dernier();							// Enlève le dernier élément
 		int				trouver(const T& element) const;			// Cherche et retourne la position de l'élément. Si non trouvé, retourne -1.
 		bool			contient(const T& element) const;			// Indique si le tableau contient l'élément
