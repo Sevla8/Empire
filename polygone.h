@@ -15,6 +15,7 @@ class Polygone {
 	public:
 		double distance(const Polygone& poly2) const;
 		double aire() const;
+		char getNom() const;
 	private:
 		char nom;
 		Tableau<Point> sommets;

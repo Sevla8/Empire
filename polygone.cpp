@@ -27,6 +27,10 @@ double Polygone::aire() const {
 	return fabs(aire/2);
 }
 
+char Polygone::getNom() const {
+	return this->nom;
+}
+
 std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {
 	os << polygone.nom << " : ";
 	for (int i = 0; i < polygone.sommets.taille()-1; i += 1)
