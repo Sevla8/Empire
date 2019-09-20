@@ -41,14 +41,44 @@ int main(int argc, const char** argv) {
 
 	switch (nbRegions) {
 		case 1:
-			cout << round(0) << endl;
-			cout << "A" << endl;
+		{
+			assert(territoires.taille() > 0);
+			double aireMax = territoires[0].aire();
+			char nom;
+			for (int i = 0; i < territoires.taille(); i += 1) {
+				double tmp = territoires[i].aire();
+				if (tmp > aireMax) {
+					aireMax = tmp;
+					nom = territoires[i].getNom();
+				}
+			}
+			cout << round(aireMax) << endl;
+			cout << nom << endl;
 			break;
+		}
 		case 2:
-			cout << round(0) << endl;
-			cout << "A" << endl;
-			cout << "B" << endl;
+		{
+			assert(territoires.taille() > 0);
+			double aireMax = 0;
+			string noms;
+			for (int i = 0; i < territoires.taille(); i += 1) {
+				for (int j = 0; j < territoires.taille(); j += 1) {
+					if (i != j && territoires[i].distance(territoires[j]) <= DM) {
+						if (territoires[i].aire() + territoires[j].aire() > aireMax) {
+							aireMax = territoires[i].aire() + territoires[j].aire();
+							noms = "";
+							noms += territoires[i].getNom();
+							noms += "\n";
+							noms += territoires[j].getNom();
+							noms += "\n";
+						}
+					}
+				}
+			}
+			cout << round(aireMax) << endl;
+			cout << noms << endl;
 			break;
+		}
 		default:
 			cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
 			break;
