@@ -21,7 +21,10 @@ double Polygone::distance(const Polygone& poly2) const {
 }
 
 double Polygone::aire() const {
-	return 1;
+	double aire = 0;
+	for (int i = 0; i < this->sommets.taille(); i += 1)
+		aire += this->sommets[(i+1)%this->sommets.taille()].calcul(this->sommets[i]);
+	return fabs(aire/2);
 }
 
 std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {

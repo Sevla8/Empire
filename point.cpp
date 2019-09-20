@@ -19,13 +19,17 @@ double Point::distancePoint(const Point& point) const {
 double Point::distanceDroite(const Point& point1, const Point& point2) const {
 	double a = (point2.y - point1.y) / (point2.x - point1.x);
 	double b = point1.y - a * point1.x;
-	return abs((a*this->x + (-1)*this->y + b) / (sqrt(pow(a, 2) + pow(-1, 2))));
+	return fabs((a*this->x + (-1)*this->y + b) / (sqrt(pow(a, 2) + pow(-1, 2))));
 }
 
 double Point::distanceSegment(const Point& point1, const Point& point2) const {
 	bool test = (this->x > point1.x && this->x < point2.x) || (this->x > point2.x && this->x < point1.x) ||
 				(this->y > point1.y && this->y < point2.y) || (this->y > point2.y && this->y < point1.y);
 	return test ? this->distanceDroite(point1, point2) : fmin(this->distancePoint(point1), this->distancePoint(point2));
+}
+
+double Point::calcul(const Point& point) const {
+	return (point.x + this->x) * (point.y - this->y);
 }
 
 std::ostream& operator<<(std::ostream& os, const Point& point) {
