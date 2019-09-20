@@ -14,7 +14,9 @@ class Point {
 		Point(){}
 		Point(double x, double y);
 		Point(const Point&);
-		double distance(const Point&) const;
+		double distancePoint(const Point&) const;
+		double distanceDroite(const Point&, const Point&) const;
+		double distanceSegment(const Point&, const Point&) const;
 	private:
 		double x;
 		double y;
