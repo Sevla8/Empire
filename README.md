@@ -21,3 +21,4 @@ https://lexique.netmath.ca/distance-entre-un-point-et-une-droite/ <br>
 https://calculis.net/droite <br>
 https://www.developpez.net/forums/d1292155/general-developpement/algorithme-mathematiques/mathematiques/calcul-distance-entre-point-segment/ <br>
 http://www.mathopenref.com/coordpolygonarea2.html <br>
+http://www.cplusplus.com/reference/algorithm/sort/ <br>
