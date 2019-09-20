@@ -23,8 +23,8 @@ double Point::distanceDroite(const Point& point1, const Point& point2) const {
 }
 
 double Point::distanceSegment(const Point& point1, const Point& point2) const {
-	bool test = this->x > point1.x && this->x < point2.x || this->x > point2.x && this->x < point1.x ||
-				this->y > point1.y && this->y < point2.y || this->y > point2.y && this->y < point1.y;
+	bool test = (this->x > point1.x && this->x < point2.x) || (this->x > point2.x && this->x < point1.x) ||
+				(this->y > point1.y && this->y < point2.y) || (this->y > point2.y && this->y < point1.y);
 	return test ? this->distanceDroite(point1, point2) : fmin(this->distancePoint(point1), this->distancePoint(point2));
 }
 
