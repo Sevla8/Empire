@@ -9,7 +9,15 @@
 #include "polygone.h"
 
 double Polygone::distance(const Polygone& poly2) const {
-	return 0;
+	double distMin = std::numeric_limits<double>::infinity();
+	for (int i = 0; i < this->sommets.taille(); i += 1) {
+		for (int j = 0; j < poly2.sommets.taille(); j += 1) {
+			double distance = this->sommets[i].distanceSegment(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
+			if (distance < distMin)
+				distMin = distance;
+		}
+	}
+	return distMin;
 }
 
 double Polygone::aire() const {
