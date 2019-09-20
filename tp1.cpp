@@ -41,18 +41,14 @@ int main(int argc, const char** argv) {
 
 	switch (nbRegions) {
 		case 1:
-		{
 			cout << round(0) << endl;
 			cout << "A" << endl;
 			break;
-		}
 		case 2:
-		{
 			cout << round(0) << endl;
 			cout << "A" << endl;
 			cout << "B" << endl;
 			break;
-		}
 		default:
 			cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
 			break;
