@@ -49,3 +49,7 @@ std::istream& operator>>(std::istream& in, Polygone& polygone) {
 	assert(c == ';');
 	return in;
 }
+
+bool operator<(const Polygone& poly1, const Polygone& poly2) {
+	return poly1.aire() < poly2.aire() ? true : false;
+}
