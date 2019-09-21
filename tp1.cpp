@@ -66,8 +66,7 @@ int main(int argc, const char** argv) {
 					if (i != j && territoires[i].distance(territoires[j]) <= DM) {
 						if (territoires[i].aire() + territoires[j].aire() > aireMax) {
 							aireMax = territoires[i].aire() + territoires[j].aire();
-							noms = "";
-							noms += territoires[i].getNom();
+							noms = territoires[i].getNom();
 							noms += "\n";
 							noms += territoires[j].getNom();
 							noms += "\n";

@@ -17,6 +17,13 @@ double Polygone::distance(const Polygone& poly2) const {
 				distMin = distance;
 		}
 	}
+	for (int i = 0; i < poly2.sommets.taille(); i += 1) {
+		for (int j = 0; j < this->sommets.taille(); j += 1) {
+			double distance = poly2.sommets[i].distanceSegment(this->sommets[j], this->sommets[(j+1)%this->sommets.taille()]);
+			if (distance < distMin)
+				distMin = distance;
+		}
+	}
 	return distMin;
 }
 
