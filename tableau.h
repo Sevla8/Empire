@@ -149,13 +149,13 @@ bool Tableau<T>::contient(const T& element) const {
 
 template <class T>
 T& Tableau<T>::operator[](int index) {
-	assert(index < this->nbElements && index > 0);
+	assert(index < this->nbElements && index >= 0);
 	return this->elements[index];
 }
 
 template <class T>
 const T& Tableau<T>::operator[](int index) const {
-	assert(index < this->nbElements && index > 0);
+	assert(index < this->nbElements && index >= 0);
 	return this->elements[index];
 }
 
