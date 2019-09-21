@@ -14,13 +14,13 @@ class Point {
 		Point(){}
 		Point(double x, double y);
 		Point(const Point&);
-		double distancePoint(const Point&) const;
-		double distanceDroite(const Point&, const Point&) const;
 		double distanceSegment(const Point&, const Point&) const;
 		double calcul(const Point&) const;
 	private:
 		double x;
 		double y;
+		double distancePoint(const Point&) const;
+		double distanceDroite(const Point&, const Point&) const;
 	friend std::ostream& operator<<(std::ostream&, const Point&);
 	friend std::istream& operator>>(std::istream&, Point&);
 };

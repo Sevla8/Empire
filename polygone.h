@@ -13,7 +13,7 @@
 
 class Polygone {
 	public:
-		double distance(const Polygone& poly2) const;
+		double distance(const Polygone&) const;
 		double aire() const;
 		char getNom() const;
 	private:
@@ -21,7 +21,6 @@ class Polygone {
 		Tableau<Point> sommets;
 	friend std::ostream& operator<<(std::ostream&, const Polygone&);
 	friend std::istream& operator>>(std::istream&, Polygone&);
-	friend bool operator<(const Polygone&, const Polygone&);
 };
 
 #endif
