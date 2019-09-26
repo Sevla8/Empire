@@ -15,9 +15,9 @@ class Polygone {
 	public:
 		double distance(const Polygone&) const;
 		double aire() const;
-		char getNom() const;
+		std::string getNom() const;
 	private:
-		char nom;
+		std::string nom;
 		Tableau<Point> sommets;
 	friend std::ostream& operator<<(std::ostream&, const Polygone&);
 	friend std::istream& operator>>(std::istream&, Polygone&);
