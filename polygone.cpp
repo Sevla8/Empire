@@ -9,7 +9,11 @@
 #include "polygone.h"
 
 double Polygone::distance(const Polygone& poly2) const {
+	//Initialise la distance minale (distMin) a l'infini.
 	double distMin = std::numeric_limits<double>::infinity();
+
+	//Compare la distance de tous les sommets du polygone implicte avec tous les segments de poly2
+	//ne retient que la plus petite distance dans distMin
 	for (int i = 0; i < this->sommets.taille(); i += 1) {
 		for (int j = 0; j < poly2.sommets.taille(); j += 1) {
 			double distance = this->sommets[i].distanceSegment(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
@@ -17,6 +21,9 @@ double Polygone::distance(const Polygone& poly2) const {
 				distMin = distance;
 		}
 	}
+
+	//Compare la distance de tous les sommets de poly2 avec tous les segments du polygone implicte
+	//ne retient que la plus petite distance dans distMin
 	for (int i = 0; i < poly2.sommets.taille(); i += 1) {
 		for (int j = 0; j < this->sommets.taille(); j += 1) {
 			double distance = poly2.sommets[i].distanceSegment(this->sommets[j], this->sommets[(j+1)%this->sommets.taille()]);
@@ -28,9 +35,10 @@ double Polygone::distance(const Polygone& poly2) const {
 }
 
 double Polygone::aire() const {
+	//Source du calcul : http://www.mathopenref.com/coordpolygonarea2.html
 	double aire = 0;
 	for (int i = 0; i < this->sommets.taille(); i += 1)
-		aire += this->sommets[(i+1)%this->sommets.taille()].calcul(this->sommets[i]);
+		aire += this->sommets[(i+1)%this->sommets.taille()].calculAir(this->sommets[i]);
 	return fabs(aire/2);
 }
 
