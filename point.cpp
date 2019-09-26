@@ -19,7 +19,7 @@ double Point::distancePoint(const Point& point) const {
 double Point::distanceDroite(const Point& point1, const Point& point2) const {
 	double a = (point2.y - point1.y) / (point2.x - point1.x);
 	double b = point1.y - a * point1.x;
-	return fabs((a*this->x + (-1)*this->y + b) / (sqrt(pow(a, 2) + pow(-1, 2))));
+	return fabs((a*this->x - this->y + b) / (sqrt(pow(a, 2) + 1 )));
 }
 
 double Point::distanceSegment(const Point& point1, const Point& point2) const {

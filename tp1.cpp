@@ -44,7 +44,7 @@ int main(int argc, const char** argv) {
 		{
 			assert(territoires.taille() > 0);
 			double aireMax = territoires[0].aire();
-			char nom;
+			string nom = territoires[0].getNom();
 			for (int i = 0; i < territoires.taille(); i += 1) {
 				double tmp = territoires[i].aire();
 				if (tmp > aireMax) {
@@ -72,6 +72,11 @@ int main(int argc, const char** argv) {
 							noms += "\n";
 						}
 					}
+				}
+				if ( territoires[i].aire() >= aireMax )
+				{
+					aireMax = territoires[i].aire();
+					noms = territoires[i].getNom() + "\n";
 				}
 			}
 			cout << round(aireMax) << endl;
