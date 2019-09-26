@@ -13,9 +13,13 @@
 
 class Empire {
 	public:
+		Empire(int n,double dm);
 
+		void proche(const Tableau<Polygone>& territoires)
 	private:
-		Tableau<Polygone> zones;
+		int nbTerritoires;
+		int distanceMinimale;
+		Tableau<Polygone> empire;
 };
 
 #endif

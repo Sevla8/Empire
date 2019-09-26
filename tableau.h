@@ -23,10 +23,10 @@ class Tableau {
 		void			enlever_dernier();							// Enlève le dernier élément
 		int				trouver(const T& element) const;			// Cherche et retourne la position de l'élément. Si non trouvé, retourne -1.
 		bool			contient(const T& element) const;			// Indique si le tableau contient l'élément
-		T&				operator[](int index);
-		const T&		operator[](int index) const;
-		Tableau<T>&		operator=(const Tableau<T>& autre);
-		bool			operator==(const Tableau<T>& autre) const;
+		T&				operator[](int index);						//return l'élément à la position index
+		const T&		operator[](int index) const;				//idem, mais en lecture seule
+		Tableau<T>&		operator=(const Tableau<T>& autre);			//surcharge de l'opérateur =
+		bool			operator==(const Tableau<T>& autre) const;	//surcharge de l'opérateur ==
 	private:
 		T*				elements;
 		int				capacite;
