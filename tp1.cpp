@@ -11,6 +11,7 @@
 #include <limits>
 #include "polygone.h"
 #include "tableau.h"
+#include "empire.h"
 
 using namespace std;
 
@@ -84,8 +85,11 @@ int main(int argc, const char** argv) {
 			break;
 		}
 		default:
-			cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
+		{
+			Empire	empire(nbRegions, DM, territoires);
+			// cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
 			break;
+		}
 	}
 
 	return 0;
