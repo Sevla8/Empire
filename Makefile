@@ -7,14 +7,16 @@ OPTIONS = -g -O0 -Wall
 
 all : tp1
 
-tp1 : tp1.cpp point.o polygone.o
-	g++ ${OPTIONS} -o tp1 tp1.cpp point.o polygone.o
-	
+tp1 : tp1.cpp point.o polygone.o empire.o
+	g++ ${OPTIONS} -o tp1 tp1.cpp point.o polygone.o empire.o
+
 point.o : point.cpp point.h
 	g++ ${OPTIONS} -c point.cpp
 
 polygone.o : polygone.cpp polygone.h point.h
 	g++ ${OPTIONS} -c polygone.cpp
+
+empire.o : empire.cpp polygone.h
 
 clean:
 	rm -rf tp1 *~ *.o
