@@ -30,8 +30,10 @@ class Polygone {
 	friend std::istream& operator>>(std::istream&, Polygone&);
 
 	//retourne true si l'air de param1 est inférieure à l'air de param2
-	friend bool operator<(const Polygone&, const Polygone&);
+	friend bool operator<(const Polygone&, const Polygone&); 
+	friend bool operator==(const Polygone&, const Polygone&); 
 
 };
 
 #endif
+ 

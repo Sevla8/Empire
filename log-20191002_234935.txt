@@ -1,0 +1,44 @@
+#Machine :  PC-Vincent
+#CPU : Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz
+#Date début : 20191002_234935
+#Limite de unlimited secondes par test
+#
+Taille des fichiers source :
+  104   314  2731 empire.cpp
+   76   420  2825 point.cpp
+   81   342  2524 polygone.cpp
+  118   420  3254 tp1.cpp
+   49   108   971 empire.h
+   40   160  1181 point.h
+   38   141  1099 polygone.h
+  197   751  5798 tableau.h
+  703  2656 20383 total
+#
+Carte    	Taille	Args	Superficie	Opt?	CPU	Mém.(k)
+carte00.txt	3	1	125	OK	0.00	1428k
+carte00.txt	3	2	225	OK	0.00	1436k
+carte00.txt	3	2-100	225	OK	0.00	1436k
+carte00.txt	3	2-50	225	OK	0.00	1436k
+carte00.txt	3	2-10	150	OK	0.01	1436k
+carte00.txt	3	2-1	125	OK	0.00	1432k
+carte00.txt	3	3	125	Echec	0.00	1444k
+carte01.txt	3	1	125	OK	0.00	1424k
+carte01.txt	3	2	170	OK	0.00	1436k
+carte01.txt	3	2-1	165	OK	0.00	1436k
+carte02.txt	26	1	46010	OK	0.00	1436k
+carte02.txt	26	2	64460	OK	0.01	1444k
+carte02.txt	26	2-500	62840	OK	0.01	1444k
+carte02.txt	26	2-10	53553	Echec	0.01	1440k
+carte02.txt	26	3	46009.5	Echec	0.03	1452k
+carte02.txt	26	3-100	70383	Echec	0.15	1468k
+carte02.txt	26	4-200	89665	Echec	1.84	1484k
+carte02.txt	26	5-200	101346	Echec	19.23	1500k
+carte03.txt	20	1	6560	OK	0.00	1548k
+carte03.txt	20	2	13120	OK	2.03	1560k
+carte03.txt	20	2-500	13120	OK	1.85	1560k
+carte03.txt	20	2-10	6560	OK	2.00	1560k
+carte03.txt	20	3	6560	Echec	2.15	1612k
+carte03.txt	20	3-100	6560	OK	1.96	1612k
+carte03.txt	20	4-200	26240	OK	8.62	1752k
+carte03.txt	20	5-200	32800	OK	11.53	1788k
+carte04.txt	10	1	1.002e+06	OK	0.03	1984k

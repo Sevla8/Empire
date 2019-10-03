@@ -74,23 +74,39 @@ int main(int argc, const char** argv) {
 						}
 					}
 				}
-				if ( territoires[i].aire() >= aireMax )
+				if ( territoires[i].aire() > aireMax )
 				{
 					aireMax = territoires[i].aire();
 					noms = territoires[i].getNom() + "\n";
 				}
 			}
 			cout << round(aireMax) << endl;
-			cout << noms << endl;
+			cout << noms ;
 			break;
 		}
 		default:
 		{
-			Empire	empire(nbRegions, DM, territoires);
-			// cout << "Ce programme ne supporte pas 3 régions ou plus!" << endl;
+			/*Création d'un empire pour gérer l'ensemble des territoires 
+			On passe en paramètres le nombre de territoires recherchés, la distance minimum les séparant
+			et le tableau contenant tous les territoires*/
+			Empire * empire = new Empire(nbRegions, DM, territoires);
+			
+			//La méthode conquete() nous retourne la liste des territoires voulus dans un tableau
+			Tableau<Polygone> poly = empire->conquete();
+
+			//On affiche la superficie totale
+			cout << round(empire->superficie(poly)) << endl;
+
+			//On affiche les noms de chaques territoires du tableau
+			for (int i = 0 ; i < poly.taille() ; i+= 1 ) {
+				cout << poly[i].getNom() << endl ;
+			}
+
+			//On libère la mémore
+			delete empire;
 			break;
 		}
 	}
-
+ 
 	return 0;
 }

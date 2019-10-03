@@ -31,6 +31,9 @@ double Polygone::distance(const Polygone& poly2) const {
 				distMin = distance;
 		}
 	}
+
+	//if (this->getNom() == "U" && poly2.getNom() == "V")
+	//	std::cout << distMin << std::endl;
 	return distMin;
 }
 
@@ -71,4 +74,8 @@ std::istream& operator>>(std::istream& in, Polygone& polygone) {
 
 bool operator<(const Polygone& poly1, const Polygone& poly2) {
 	return poly1.aire() < poly2.aire() ? true : false;
+}
+
+bool operator==(const Polygone& poly1, const Polygone& poly2) {
+	return poly1.getNom() == poly2.getNom() ? true : false;
 }
