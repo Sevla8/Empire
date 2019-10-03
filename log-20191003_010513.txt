@@ -1,0 +1,71 @@
+#Machine :  PC-Vincent
+#CPU : Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz
+#Date début : 20191003_010513
+#Limite de unlimited secondes par test
+#
+Taille des fichiers source :
+  115   483  3743 empire.cpp
+   76   420  2825 point.cpp
+   81   342  2524 polygone.cpp
+  116   393  2846 tp1.cpp
+   54   255  1974 empire.h
+   40   160  1181 point.h
+   38   141  1099 polygone.h
+  197   751  5798 tableau.h
+  717  2945 21990 total
+#
+Carte    	Taille	Args	Superficie	Opt?	CPU	Mém.(k)
+carte00.txt	3	1	1	Echec	0.01	1364k
+carte00.txt	3	2	1	Echec	0.00	1368k
+carte00.txt	3	2-100	1	Echec	0.00	1368k
+carte00.txt	3	2-50	1	Echec	0.00	1372k
+carte00.txt	3	2-10	1	Echec	0.00	1368k
+carte00.txt	3	2-1	1	Echec	0.00	1372k
+carte00.txt	3	3	1	Echec	0.00	1368k
+carte01.txt	3	1	1	Echec	0.00	1372k
+carte01.txt	3	2	1	Echec	0.00	1372k
+carte01.txt	3	2-1	1	Echec	0.00	1372k
+carte02.txt	26	1	1	Echec	0.01	1372k
+carte02.txt	26	2	1	Echec	0.00	1376k
+carte02.txt	26	2-500	1	Echec	0.00	1376k
+carte02.txt	26	2-10	1	Echec	0.00	1376k
+carte02.txt	26	3	1	Echec	0.00	1372k
+carte02.txt	26	3-100	1	Echec	0.01	1376k
+carte02.txt	26	4-200	1	Echec	0.00	1372k
+carte02.txt	26	5-200	1	Echec	0.00	1376k
+carte03.txt	20	1	1	Echec	0.00	1492k
+carte03.txt	20	2	1	Echec	0.00	1492k
+carte03.txt	20	2-500	1	Echec	0.01	1492k
+carte03.txt	20	2-10	1	Echec	0.00	1496k
+carte03.txt	20	3	1	Echec	0.01	1492k
+carte03.txt	20	3-100	1	Echec	0.00	1496k
+carte03.txt	20	4-200	1	Echec	0.01	1488k
+carte03.txt	20	5-200	1	Echec	0.01	1496k
+carte04.txt	10	1	1	Echec	0.03	1928k
+carte04.txt	10	2-500	1	Echec	0.06	1928k
+carte05.txt	50	1	1	Echec	0.31	9928k
+carte05.txt	50	2-500	1	Echec	0.28	9928k
+carte06.txt	105	1	1	Echec	0.00	1432k
+carte06.txt	105	2-5000	1	Echec	0.00	1432k
+carte06.txt	105	3-4000	1	Echec	0.00	1436k
+carte06.txt	105	4-3000	1	Echec	0.01	1432k
+carte06.txt	105	5-2000	1	Echec	0.01	1436k
+carte06.txt	105	7-2000	1	Echec	0.00	1432k
+carte06.txt	105	8-2000	1	Echec	0.00	1432k
+carte06.txt	105	9-2000	1	Echec	0.00	1436k
+carte06.txt	105	10-2000	1	Echec	0.00	1432k
+carte06.txt	105	11-2000	1	Echec	0.01	1436k
+carte06.txt	105	12-2000	1	?	0.01	1432k
+carte07.txt	496	1	1	Echec	0.01	1532k
+carte07.txt	496	2	1	Echec	0.01	1528k
+carte07.txt	496	2-10	1	Echec	0.01	1532k
+carte07.txt	496	3-2000	1	Echec	0.03	1532k
+carte07.txt	496	4-10	1	Echec	0.03	1532k
+carte07.txt	496	4-100	1	Echec	0.01	1528k
+carte08.txt	55	1	1	Echec	0.00	1492k
+carte08.txt	55	2-10	1	Echec	0.00	1492k
+carte08.txt	55	3-10	1	Echec	0.00	1492k
+carte08.txt	55	3-500	1	Echec	0.01	1492k
+carte08.txt	55	4-10	1	Echec	0.01	1496k
+carte08.txt	55	4-500	1	Echec	0.01	1496k
+carte08.txt	55	4-20000	1	Echec	0.01	1496k
