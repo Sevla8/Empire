@@ -1,0 +1,7 @@
+#Rapport de correction INF3105 / TP1
+#Date:	20191006_212149
+#Machine :	 PC-Vincent
+#CPU :	 Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz
+
+#		carte08_1				carte08_2-10				carte08_3-10				carte08_3-500				carte08_4-10				carte08_4-500				carte08_4-20000			
+#Soumission	Taille sources	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem

@@ -26,19 +26,19 @@ class Empire {
 
 		/*Retourne la superficie d'un tableau de Polygones résultant
 		de la somme des aires des polygones le composant*/
-		double superficie(Tableau<Polygone> terrains);
+		double superficie(Tableau<Polygone>& terrains);
 
 	private:
 		
 		/* Retourne un tableau de polygones étant à une distance suffisamment proches (en fonction de distanceMinimale)
 		et n'ayant toujours pas été visité par la méthode conquerir() qui parcours les territoires proches*/
 		//dejaVu -> ensemble des polygones déjà visité dans un tableau
-		Tableau<Polygone> voisins(const Polygone& poly, const Tableau<Polygone> dejaVu );
+		Tableau<Polygone> voisins(const Polygone& poly, const Tableau<Polygone>& dejaVu );
 
 		/*Parcours le maximum de territoires possibles en commençant par chaque territoire
 		Pour déterminer le plus grand Empire possible en fonction des attributs de l'objet*/
 		//nbT = nombre Territoire -> désigne le nombre de territoires restant à visiter
-		Tableau<Polygone> conquerir(Tableau<Polygone> terrains, int nbT );
+		Tableau<Polygone> conquerir(Tableau<Polygone>& terrains, int nbT );
 
 		//Nombre de territoires à visiter
 		int nbTerritoires;

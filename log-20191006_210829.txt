@@ -1,0 +1,18 @@
+#Machine :  PC-Vincent
+#CPU : Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz
+#Date début : 20191006_210829
+#Limite de unlimited secondes par test
+#
+Taille des fichiers source :
+  120   541  4105 empire.cpp
+   76   420  2825 point.cpp
+   85   348  2592 polygone.cpp
+  135   603  4251 tp1.cpp
+   54   255  1977 empire.h
+   40   160  1181 point.h
+   44   147  1163 polygone.h
+  197   751  5798 tableau.h
+  751  3225 23892 total
+#
+Carte    	Taille	Args	Superficie	Opt?	CPU	Mém.(k)
+carte05.txt	50	1	1.6008e+07	OK	0.18	9980k
