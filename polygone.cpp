@@ -37,16 +37,20 @@ double Polygone::distance(const Polygone& poly2) const {
 	return distMin;
 }
 
-double Polygone::aire() const {
-	//Source du calcul : http://www.mathopenref.com/coordpolygonarea2.html
-	double aire = 0;
-	for (int i = 0; i < this->sommets.taille(); i += 1)
-		aire += this->sommets[(i+1)%this->sommets.taille()].calculAir(this->sommets[i]);
-	return fabs(aire/2);
+double Polygone::getAire() const{
+	return this->aire;
 }
 
 std::string Polygone::getNom() const {
 	return this->nom;
+}
+
+void Polygone::definirAire() {
+	//Source du calcul : http://www.mathopenref.com/coordpolygonarea2.html
+	double aire = 0;
+	for (int i = 0; i < this->sommets.taille(); i += 1)
+		aire += this->sommets[(i+1)%this->sommets.taille()].calculAir(this->sommets[i]);
+	this->aire = fabs(aire/2);
 }
 
 std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {
@@ -69,11 +73,15 @@ std::istream& operator>>(std::istream& in, Polygone& polygone) {
 		polygone.sommets.ajouter(p);
 	} while (c == ',');
 	assert(c == ';');
+
+	//On calcule l'aire
+	polygone.definirAire();
+
 	return in;
 }
 
 bool operator<(const Polygone& poly1, const Polygone& poly2) {
-	return poly1.aire() < poly2.aire() ? true : false;
+	return poly1.getAire() < poly2.getAire() ? true : false;
 }
 
 bool operator==(const Polygone& poly1, const Polygone& poly2) {

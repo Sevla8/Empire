@@ -1,0 +1,8 @@
+#Rapport de correction INF3105 / TP1
+#Date:	20191006_205343
+#Machine :	 PC-Vincent
+#CPU :	 Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz
+
+#		carte03_1				carte03_2				carte03_2-500				carte03_2-10				carte03_3				carte03_3-100				carte03_4-200				carte03_5-200			
+#Soumission	Taille sources	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem	Sup	Opt?	CPU	Mem
+.	  740  3212 23707 total	6560	OK	0.00	1544k	13120	OK	0.76	1560k	13120	OK	0.64	1560k	6560	OK	0.73	1560k	19680	OK	10.50	1744k	6560	OK	0.78	1600k	26240	OK	2.20	1712k	32800	OK	3.15	1760k
