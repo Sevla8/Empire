@@ -62,7 +62,7 @@ Tableau<Polygone> Empire::voisins(const Polygone& poly, const Tableau<Polygone>&
 	//Tableau qu'on retournera
 	Tableau<Polygone> result;
 
-	//On vérifie pour l'ensemble des polygones
+	//On vérifie pour l'ensemble des polygones de la carte
 	/*Tous les empires possibles contenant un territoire se trouvant avant la position 'this->terrVisit'
 	dans le tableau 'this->territoires' ont déjà été testés,
 	=> ce n'est donc pas la peine de réssayer de créer un empire avec eux*/

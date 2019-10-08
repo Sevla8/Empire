@@ -12,40 +12,26 @@ Point::Point(const Point& point) : x(point.x), y(point.y) {}
 
 Point::Point(double _x, double _y) : x(_x), y(_y) {}
 
-double Point::distancePoint(const Point& point) const {
-	//Pythagore : AC = racine de ( AB² + BC² )
-	return sqrt(pow(this->x - point.x, 2) + pow(this->y - point.y, 2));
-}
 
-double Point::distanceDroite(const Point& point1, const Point& point2) const {
-	/*pour une droite ayant comme equation, d:y=ax+b
-	  et pour un point ayant comme coordonnée, P(xp, yp)
-	  Le calcul de la distance de ce point par rappport à cette droite est 
-	  abs( (a*xp - yp + b) / (sqrt(a² + 1²)) ) 
+double Point::distance(const Point& point1, const Point& point2) const {
+	//Algorithme donné dans le sujet
+	double ratio = (this->x - point1.x) * (point2.x - point1.x) + (this->y - point1.y) * (point2.y - point1.y); 
+	ratio /= (pow(point2.x - point1.x, 2) + pow(point2.y - point1.y, 2));
 
-	  source du calcul : https://lexique.netmath.ca/distance-entre-un-point-et-une-droite/
-	*/
-	double a = (point2.y - point1.y) / (point2.x - point1.x);
-	double b = point1.y - a * point1.x;
-	return fabs((a*this->x - this->y + b) / (sqrt(pow(a, 2) + 1 )));
-}
+	if (ratio > 1)
+		ratio = 1;
+	else if (ratio < 0)
+		ratio = 0;
 
-double Point::distanceSegment(const Point& point1, const Point& point2) const {
-	/* Si l'abscisse du point implicite n'est pas compris entre les abscisses des deux extrémités du segment, formé par param1 et param2
-	   ou l'ordonnée du point implicite n'est pas comprise entre les ordonnées des deux extrémités du segment, formé par param1 et param2
+	double x = ratio * (point2.x - point1.x);
+	double y = ratio * (point2.y - point1.y);
+	Point v(x, y);
 
-	   Alors la distance entre le point implicite et le segment formé par param1 et param2 est le minimum entre :
-	   la distance entre le point implicite et param1
-	   et
-	   la distance entre le point implicite et param2
+	x = point1.x + v.x;
+	y = point1.y + v.y;
+	Point p(x, y);
 
-	   Sinon
-		la distance entre le point implicite et le segment formé par param1 et param2 est la distance entre :
-		le point implicite et la droite formée par param1 et param2
-	*/
-	bool test = (this->x > point1.x && this->x < point2.x) || (this->x > point2.x && this->x < point1.x) ||
-				(this->y > point1.y && this->y < point2.y) || (this->y > point2.y && this->y < point1.y);
-	return test ? this->distanceDroite(point1, point2) : fmin(this->distancePoint(point1), this->distancePoint(point2));
+	return sqrt(pow(p.x - this->x, 2) + pow(p.y - this->y, 2));
 }
 
 double Point::calculAir(const Point& point) const {

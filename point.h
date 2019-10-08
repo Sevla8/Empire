@@ -17,7 +17,7 @@ class Point {
 		Point(const Point&);
 
 		//Retourne la distance entre le point implicite (*this) et le segment formé par les points ( param1 , param2 )
-		double distanceSegment(const Point&, const Point&) const;
+		double distance(const Point&, const Point&) const;
 
 		//Retourne un calcul permettant de calculer l'air d'un polygone
 		double calculAir(const Point&) const;
@@ -25,11 +25,6 @@ class Point {
 		//Coordonnées du point implicite
 		double x;
 		double y;
-
-		//retourne la distance entre le point implicite et param1
-		double distancePoint(const Point&) const;
-		//Retourne la distance entre le point implicite (*this) et la droite formée par les points ( param1 , param2 )
-		double distanceDroite(const Point&, const Point&) const;
 
 	//Surcharge des opérateurs >> et <<
 	//Permettent de lire et d'écrire un point sous le format " ( x , y ) "

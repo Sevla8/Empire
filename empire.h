@@ -44,7 +44,7 @@ class Empire {
 		int nbTerritoires;
 		//Distance minimale séparant 2 Polygones / Territoires
 		double distanceMinimale;
-		//Tableaux composés de tous les polygones de l'empire en totalité
+		//Tableaux composés de tous les polygones de la carte en totalité
 		Tableau<Polygone> territoires;
 		//Indique à partir de quelle incrémentation on n'a pas encore testé de lancer de conquête
 		//Limite les répétitions de tableaux de territoires en résultat
