@@ -16,24 +16,21 @@ double Polygone::distance(const Polygone& poly2) const {
 	//ne retient que la plus petite distance dans distMin
 	for (int i = 0; i < this->sommets.taille(); i += 1) {
 		for (int j = 0; j < poly2.sommets.taille(); j += 1) {
-			double distance = this->sommets[i].distanceSegment(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
+			double distance;
+			distance = this->sommets[i].distance(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
+			if (distance < distMin)
+				distMin = distance;
+			distance = this->sommets[(i+1)%this->sommets.taille()].distance(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
+			if (distance < distMin)
+				distMin = distance;
+			distance = poly2.sommets[j].distance(this->sommets[i], this->sommets[(i+1)%this->sommets.taille()]);
+			if (distance < distMin)
+				distMin = distance;
+			distance = poly2.sommets[(j+1)%poly2.sommets.taille()].distance(this->sommets[i], this->sommets[(i+1)%this->sommets.taille()]);
 			if (distance < distMin)
 				distMin = distance;
 		}
 	}
-
-	//Compare la distance de tous les sommets de poly2 avec tous les segments du polygone implicte
-	//ne retient que la plus petite distance dans distMin
-	for (int i = 0; i < poly2.sommets.taille(); i += 1) {
-		for (int j = 0; j < this->sommets.taille(); j += 1) {
-			double distance = poly2.sommets[i].distanceSegment(this->sommets[j], this->sommets[(j+1)%this->sommets.taille()]);
-			if (distance < distMin)
-				distMin = distance;
-		}
-	}
-
-	//if (this->getNom() == "U" && poly2.getNom() == "V")
-	//	std::cout << distMin << std::endl;
 	return distMin;
 }
 
