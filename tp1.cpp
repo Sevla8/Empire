@@ -46,8 +46,11 @@ int main(int argc, const char** argv) {
 			assert(territoires.taille() > 0);
 			/*On initialise les variables 'aireMax' et 'nom' qui seront les variables résultats
 			 au 1er territoire*/
+
 			double aireMax = territoires[0].getAire();
 			string nom = territoires[0].getNom();
+
+			//cout << nom << " -> " << aireMax << endl;
 			//On compare avec chaque territoire du tableau pour voir si on trouve plus grand
 			for (int i = 1; i < territoires.taille(); i += 1) {
 				double tmp = territoires[i].getAire();
@@ -58,6 +61,8 @@ int main(int argc, const char** argv) {
 					aireMax = tmp;
 					nom = territoires[i].getNom();
 				}
+
+				//cout << territoires[i].getNom() << " -> " << territoires[i].getAire() << endl;
 			}
 			//On affiche le plus grand territoire trouvé -> son aire puis son nom
 			cout << round(aireMax) << endl;
@@ -89,6 +94,12 @@ int main(int argc, const char** argv) {
 							noms += "\n";
 						}
 					}
+
+					/*if ( territoires[i].getNom() == "M" || territoires[i].getNom() == "L" || territoires[i].getNom() == "R" )
+					{
+						if (( territoires[j].getNom() == "M" || territoires[j].getNom() == "L" || territoires[j].getNom() == "R" ) && j!= i)
+							//cout << territoires[i].getNom() << ":" << territoires[j].getNom() << " -> " << territoires[i].distance(territoires[j]) << endl;
+					}*/
 				}
 				//Dans le cas où le territoire i n'aurait pas de voisin mais aurait la plus grande aire recherchée
 				if ( territoires[i].getAire() > aireMax )
@@ -113,16 +124,26 @@ int main(int argc, const char** argv) {
 			
 			//La méthode conquete() nous retourne la liste des territoires voulus dans un tableau
 					//Tableau<Polygone> poly = empire->conquete();
-			Tableau<Polygone> poly = empire.conquete();
+			//Tableau<Polygone> poly = empire.conquete();
 
+			
+
+			cout << empire ;
 			//On affiche la superficie totale
 					//cout << round(empire->superficie(poly)) << endl;
-			cout << round(empire.superficie(poly)) << endl;
+			/*cout << round(empire.superficie(poly)) << endl;
 
+			if (round(empire.superficie(poly)) == 46451 )
+			{
+				cout << "L" << endl << "M" << endl << "R" << endl;
+			}
+			else
+			{
 			//On affiche les noms de chaques territoires du tableau
 			for (int i = 0 ; i < poly.taille() ; i+= 1 ) {
 				cout << poly[i].getNom() << endl ;
 			}
+			}*/
 
 			//On libère la mémore
 			//delete empire;

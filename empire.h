@@ -20,15 +20,14 @@ class Empire {
 		//Destructeur
 		//~Empire();
 
-		/*Retourne le tableau de Polygone à la plus grande superficie en fonction 
+		/*Trouve le tableau de Polygone à la plus grande superficie en fonction 
 		des attributs de l'objet*/
-		Tableau<Polygone> conquete();
+		private:
 
 		/*Retourne la superficie d'un tableau de Polygones résultant
 		de la somme des aires des polygones le composant*/
-		double superficie(Tableau<Polygone>& terrains);
-
-	private:
+		double superficie(const Tableau<Polygone>& terrains);
+		double superficie() const;
 		
 		/* Retourne un tableau de polygones étant à une distance suffisamment proches (en fonction de distanceMinimale)
 		et n'ayant toujours pas été visité par la méthode conquerir() qui parcours les territoires proches*/
@@ -40,15 +39,24 @@ class Empire {
 		//nbT = nombre Territoire -> désigne le nombre de territoires restant à visiter
 		Tableau<Polygone> conquerir(Tableau<Polygone>& terrains, int nbT );
 
+		//Lance la conquête de l'empire
+		//Place de résultat dans l'attribut 'empire'
+		void conquete();
+
+		//Trie les territoires obtenue en fonction de leur place dans la carte
+		//Pour être en accord avec le résultat demandé
+		void trierNomCarte();
+
 		//Nombre de territoires à visiter
 		int nbTerritoires;
 		//Distance minimale séparant 2 Polygones / Territoires
 		double distanceMinimale;
 		//Tableaux composés de tous les polygones de la carte en totalité
 		Tableau<Polygone> territoires;
-		//Indique à partir de quelle incrémentation on n'a pas encore testé de lancer de conquête
-		//Limite les répétitions de tableaux de territoires en résultat
-		int terrVisit;
+		//Tableau résulat
+		Tableau<Polygone> empire;
+
+		friend std::ostream& operator<<(std::ostream&, const Empire&);
 };
 
 #endif
