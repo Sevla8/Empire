@@ -50,7 +50,6 @@ int main(int argc, const char** argv) {
 			double aireMax = territoires[0].getAire();
 			string nom = territoires[0].getNom();
 
-			//cout << nom << " -> " << aireMax << endl;
 			//On compare avec chaque territoire du tableau pour voir si on trouve plus grand
 			for (int i = 1; i < territoires.taille(); i += 1) {
 				double tmp = territoires[i].getAire();
@@ -61,8 +60,6 @@ int main(int argc, const char** argv) {
 					aireMax = tmp;
 					nom = territoires[i].getNom();
 				}
-
-				//cout << territoires[i].getNom() << " -> " << territoires[i].getAire() << endl;
 			}
 			//On affiche le plus grand territoire trouvé -> son aire puis son nom
 			cout << round(aireMax) << endl;
@@ -82,8 +79,8 @@ int main(int argc, const char** argv) {
 				// exemple: Si on analyse U + V, inutile d'analyser V + U
 				for (int j = i; j < territoires.taille(); j += 1) {
 					//Si les territoires numéros 'i'  et 'j' ne sont pas égaux
-					//Que la distance qui les sépare soit inférieur à DM
-					//Et que la somme de leur aire soit plus grande que la plus grande aire trouvée précédement
+					//Que la distance qui les sépare est inférieure à DM
+					//Et que la somme de leur aire est plus grande que la plus grande aire trouvée précédement
 					if (i != j && territoires[i].distance(territoires[j]) <= DM) {
 						if (territoires[i].getAire() + territoires[j].getAire() > aireMax) {
 							//Si oui, on sauvegarde la somme des aires et les 2 noms des 2 territoires
@@ -94,14 +91,8 @@ int main(int argc, const char** argv) {
 							noms += "\n";
 						}
 					}
-
-					/*if ( territoires[i].getNom() == "M" || territoires[i].getNom() == "L" || territoires[i].getNom() == "R" )
-					{
-						if (( territoires[j].getNom() == "M" || territoires[j].getNom() == "L" || territoires[j].getNom() == "R" ) && j!= i)
-							//cout << territoires[i].getNom() << ":" << territoires[j].getNom() << " -> " << territoires[i].distance(territoires[j]) << endl;
-					}*/
 				}
-				//Dans le cas où le territoire i n'aurait pas de voisin mais aurait la plus grande aire recherchée
+				//Dans le cas où le territoire i n'aurait pas de voisin mais serait la plus grande aire recherchée
 				if ( territoires[i].getAire() > aireMax )
 				{
 					aireMax = territoires[i].getAire();
@@ -119,34 +110,9 @@ int main(int argc, const char** argv) {
 			/*Création d'un empire pour gérer l'ensemble des territoires 
 			On passe en paramètres le nombre de territoires recherchés, la distance minimum les séparant
 			et le tableau contenant tous les territoires*/
-					//Empire * empire = new Empire(nbRegions, DM, territoires);
 			Empire empire(nbRegions, DM, territoires);
-			
-			//La méthode conquete() nous retourne la liste des territoires voulus dans un tableau
-					//Tableau<Polygone> poly = empire->conquete();
-			//Tableau<Polygone> poly = empire.conquete();
-
-			
-
+			//empire' donc contient le résulat cherché, on demande donc d'afficher l'objet
 			cout << empire ;
-			//On affiche la superficie totale
-					//cout << round(empire->superficie(poly)) << endl;
-			/*cout << round(empire.superficie(poly)) << endl;
-
-			if (round(empire.superficie(poly)) == 46451 )
-			{
-				cout << "L" << endl << "M" << endl << "R" << endl;
-			}
-			else
-			{
-			//On affiche les noms de chaques territoires du tableau
-			for (int i = 0 ; i < poly.taille() ; i+= 1 ) {
-				cout << poly[i].getNom() << endl ;
-			}
-			}*/
-
-			//On libère la mémore
-			//delete empire;
 			break;
 		}
 	}

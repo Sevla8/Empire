@@ -43,12 +43,13 @@ double Point::calculAir(const Point& point) const {
 	source : http://www.mathopenref.com/coordpolygonarea2.html */
 	return (point.x + this->x) * (point.y - this->y);
 }
-
+//Pour écire un point
 std::ostream& operator<<(std::ostream& os, const Point& point) {
 	os << "(" << point.x << "," << point.y << ")";
 	return os;
 }
 
+//Pour lire un point
 std::istream& operator>>(std::istream& is, Point& point) {
 	char po, vir, pf;
 	is >> po;
