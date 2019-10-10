@@ -19,5 +19,5 @@ polygone.o : polygone.cpp polygone.h point.h
 empire.o : empire.cpp polygone.h
 
 clean:
-	rm -rf tp1 *~ *.o
+	rm -rf tp1 *~ *.o *.txt
 
