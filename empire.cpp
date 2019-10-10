@@ -5,50 +5,65 @@
 */
 
 #include "empire.h"
+#include <cmath>
 
 //Constructeur de la classe
-Empire::Empire(int n, double dm, Tableau<Polygone>& poly) : nbTerritoires(n), distanceMinimale(dm), terrVisit(0) {
+Empire::Empire(int n, double dm, Tableau<Polygone>& poly) : nbTerritoires(n), distanceMinimale(dm) {
 	this->territoires = poly;
+
+	this->conquete();
+
+	this->trierNomCarte();
 }
 
 //Empire::~Empire() {}
 
-Tableau<Polygone> Empire::conquete(){
-
-	//Création du tableau qu'on retournera en sortie
-	Tableau<Polygone> result;
+void Empire::conquete(){
 
 	//On commence par lancer une conquête depuis chaque polygone
-	for ( this->terrVisit = 0 ; this->terrVisit < this->territoires.taille() ; this->terrVisit+= 1 ) {
+	for ( int i = 0 ; i < this->territoires.taille() ; i+= 1 ) {
 
-		//Terrains qui deviendra la conquête de l'empire depuis le territoire "this->terrVisit"
+		//Terrains qui deviendra la conquête de l'empire depuis le territoire "i"
 		Tableau<Polygone> terrains;
 		//On y ajoute le polygone de départ
-		terrains.ajouter(this->territoires[this->terrVisit]);
+		terrains.ajouter(this->territoires[i]);
 
 		//On lance la conquête à partir de ce polygone
 		//Avec ce 1er territoire, on en a déjà visité 1, d'où le "nbTerritoires - 1"
 		terrains = this->conquerir(terrains, this->nbTerritoires - 1);
 
+		/*for (int i = 0 ; i < terrains.taille() ; i++ )
+			std::cout << " + " << terrains[i].getNom() ;
+		std::cout << " --> superficie : " << this->superficie(terrains) << std::endl;*/
+
 		//Si la nouvelle superficie est plus grande que l'ancienne retenue
-		if ( this->superficie(result) < this->superficie(terrains) )
+		if ( this->superficie(this->empire) < this->superficie(terrains) )
 		{
 			//On sauvegarde le nouveau tableau
-			result = terrains;
+			this->empire = terrains;
 		}
 	}
-
-	//On retourne le tableau obtenu
-	return result;
 }
 
-double Empire::superficie(Tableau<Polygone>& terrains){
+double Empire::superficie(const Tableau<Polygone>& terrains){
 	//On initialise l'aire qu'on retournera
 	double aire = 0;
 	//On parcours tous les polygones du tableau
 	for (int i = 0; i < terrains.taille(); i += 1) {
 		//On additionne leur aire
 		aire += terrains[i].getAire();
+	}
+	//On retourne la somme totale
+	return aire;
+}
+
+double Empire::superficie() const {
+	//On initialise l'aire qu'on retournera
+	double aire = 0;
+	//On parcours tous les polygones du tableau
+	for (int i = 0; i < this->empire.taille(); i += 1) {
+		//On additionne leur aire
+		aire += this->empire[i].getAire();
 	}
 	//On retourne la somme totale
 	return aire;
@@ -63,10 +78,7 @@ Tableau<Polygone> Empire::voisins(const Polygone& poly, const Tableau<Polygone>&
 	Tableau<Polygone> result;
 
 	//On vérifie pour l'ensemble des polygones de la carte
-	/*Tous les empires possibles contenant un territoire se trouvant avant la position 'this->terrVisit'
-	dans le tableau 'this->territoires' ont déjà été testés,
-	=> ce n'est donc pas la peine de réssayer de créer un empire avec eux*/
-	for (int i = this->terrVisit ; i < this->territoires.taille(); i += 1) {
+	for (int i = 0 ; i < this->territoires.taille(); i += 1) {
 		
 		/*Si le polygone "i" est suffisamment proche
 		Et si encore non visité */
@@ -79,11 +91,14 @@ Tableau<Polygone> Empire::voisins(const Polygone& poly, const Tableau<Polygone>&
 	return result;
 }
 
+
 Tableau<Polygone> Empire::conquerir(Tableau<Polygone>& terrains, int nbT ){
 
 	//Si on n'a plus de territoire à visiter, on s'arrête là
 	if (nbT <= 0)
+	{
 		return terrains;
+	}
 
 	/*Le dernier territoire visité
 	-> Soit là où on est est dans notre avancé de conquête*/
@@ -118,4 +133,51 @@ Tableau<Polygone> Empire::conquerir(Tableau<Polygone>& terrains, int nbT ){
 
 	//On retourne le tableaux de territoires obtenu
 	return nvTerresResult;
+}
+
+void Empire::trierAlphabet(){
+	Tableau<int> tmp;
+
+	int tmpBis;
+
+	/*for ( int i = 0 ; i < this->empire.taille() ; i+=1 ) {
+		for ( int j = i ; j < this->empire.taille() ; j+=1 ) {
+			if ( this->empire[j].getNom() < this->empire[i].getNom() )
+			{
+				tmp = this->empire[j];
+				this->empire[j] = this->empire[i];
+				this->empire[i] = tmp;
+			}
+		}
+	}*/
+
+	for ( int i = 0 ; i < this->empire.taille() ; i+=1 ) {
+		tmp.ajouter(this->territoires.trouver(this->empire[i]));
+	}
+
+	for ( int i = 0 ; i < tmp.taille() ; i+=1 ) {
+		for ( int j = i ; j < tmp.taille() ; j+=1 ) {
+			if ( tmp[j] < tmp[i] )
+			{
+				tmpBis = tmp[j];
+				tmp[j] = tmp[i];
+				tmp[i] = tmpBis;
+			}
+		}
+	}
+
+	this->empire.vider();
+
+	for ( int i = 0 ; i < tmp.taille() ; i+=1 ) {
+		this->empire.ajouter(this->territoires[tmp[i]]);
+	}
+}
+
+std::ostream& operator<<(std::ostream& os, const Empire& emp) {
+	std::cout << round(emp.superficie()) << std::endl;
+
+	for (int i = 0 ; i < emp.empire.taille() ; i+= 1 ) {
+		std::cout << emp.empire[i].getNom() << std::endl ;
+	}
+
 }
