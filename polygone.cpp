@@ -17,20 +17,26 @@ double Polygone::distance(const Polygone& poly2) const {
 	for (int i = 0; i < this->sommets.taille(); i += 1) {
 		for (int j = 0; j < poly2.sommets.taille(); j += 1) {
 			double distance;
+			//Regarde la distance minimale entre 2 segments appartenant à deux polygones
+			//Distance sommet 1 de polygone 1 au segment de polygone 2 
 			distance = this->sommets[i].distance(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
 			if (distance < distMin)
 				distMin = distance;
+			//Distance sommet 2 de polygone 1 au segment de polygone 2
 			distance = this->sommets[(i+1)%this->sommets.taille()].distance(poly2.sommets[j], poly2.sommets[(j+1)%poly2.sommets.taille()]);
 			if (distance < distMin)
 				distMin = distance;
+			//Distance sommet 1 de polygone 2 au segment de polygone 1
 			distance = poly2.sommets[j].distance(this->sommets[i], this->sommets[(i+1)%this->sommets.taille()]);
 			if (distance < distMin)
 				distMin = distance;
+			//Distance sommet 2 de polygone 2 au segment de polygone 1
 			distance = poly2.sommets[(j+1)%poly2.sommets.taille()].distance(this->sommets[i], this->sommets[(i+1)%this->sommets.taille()]);
 			if (distance < distMin)
 				distMin = distance;
 		}
 	}
+	//On retourne la plus petite valeur trouvée
 	return distMin;
 }
 
@@ -47,9 +53,14 @@ void Polygone::definirAire() {
 	double aire = 0;
 	for (int i = 0; i < this->sommets.taille(); i += 1)
 		aire += this->sommets[(i+1)%this->sommets.taille()].calculAir(this->sommets[i]);
+
+	//Avec calculAir() = (point.x + this->x) * (point.y - this->y);
+
+	//On sauvegarde l'air calculé dans l'attribut 'air' pour ne plus l'avoir à calculer
 	this->aire = fabs(aire/2);
 }
 
+//Pour écire un polygone
 std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {
 	os << polygone.nom << " : ";
 	for (int i = 0; i < polygone.sommets.taille()-1; i += 1)
@@ -58,6 +69,7 @@ std::ostream& operator<<(std::ostream& os, const Polygone& polygone) {
 	return os;
 }
 
+//Pour lire un polygone
 std::istream& operator>>(std::istream& in, Polygone& polygone) {
 	polygone.sommets.vider();
 	in >> polygone.nom >> std::ws;
@@ -77,10 +89,12 @@ std::istream& operator>>(std::istream& in, Polygone& polygone) {
 	return in;
 }
 
+//Pour comparer deux polygones on compare leur aire
 bool operator<(const Polygone& poly1, const Polygone& poly2) {
 	return poly1.getAire() < poly2.getAire() ? true : false;
 }
 
+//On estime que deux Polygones sont égaux lorsqu'ils ont le même nom
 bool operator==(const Polygone& poly1, const Polygone& poly2) {
 	return poly1.getNom() == poly2.getNom() ? true : false;
 }

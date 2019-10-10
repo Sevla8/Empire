@@ -11,12 +11,12 @@
 Empire::Empire(int n, double dm, Tableau<Polygone>& poly) : nbTerritoires(n), distanceMinimale(dm) {
 	this->territoires = poly;
 
+	//On lance la conquête
 	this->conquete();
 
+	//Trie les territoires en fonction de leur emplacement dans la carte
 	this->trierNomCarte();
 }
-
-//Empire::~Empire() {}
 
 void Empire::conquete(){
 
@@ -32,14 +32,10 @@ void Empire::conquete(){
 		//Avec ce 1er territoire, on en a déjà visité 1, d'où le "nbTerritoires - 1"
 		terrains = this->conquerir(terrains, this->nbTerritoires - 1);
 
-		/*for (int i = 0 ; i < terrains.taille() ; i++ )
-			std::cout << " + " << terrains[i].getNom() ;
-		std::cout << " --> superficie : " << this->superficie(terrains) << std::endl;*/
-
 		//Si la nouvelle superficie est plus grande que l'ancienne retenue
 		if ( this->superficie(this->empire) < this->superficie(terrains) )
 		{
-			//On sauvegarde le nouveau tableau
+			//On sauvegarde le nouveau tableau dans 'empire'
 			this->empire = terrains;
 		}
 	}
@@ -72,7 +68,7 @@ double Empire::superficie() const {
 
 /*Liste dans un tableau les polygones voisins (distance < distanceMinimale)
  et encore non visité lors de la conquête de l'empire
- (on s'intéresse qu'aux nouveaux territoires -> non conquéris) */
+ (on s'intéresse qu'aux nouveaux territoires => non conquéris) */
 Tableau<Polygone> Empire::voisins(const Polygone& poly, const Tableau<Polygone>& dejaVu ) {
 	//Tableau qu'on retournera
 	Tableau<Polygone> result;
@@ -101,7 +97,7 @@ Tableau<Polygone> Empire::conquerir(Tableau<Polygone>& terrains, int nbT ){
 	}
 
 	/*Le dernier territoire visité
-	-> Soit là où on est est dans notre avancé de conquête*/
+		-> Soit là où on est est dans notre avancé de conquête*/
 	int dernier = terrains.taille()-1;
 	//On établie une liste de ses voisins potentiels à partir de notre position 'dernier'
 	// ( le paramètre 'terrains' est le tableau des territoires déjà visités )
@@ -118,8 +114,8 @@ Tableau<Polygone> Empire::conquerir(Tableau<Polygone>& terrains, int nbT ){
 	//On visite tous les terrains que l'on peut conquérir (car proche)
 	for ( int i = 0 ; i < voisins.taille() ; i+= 1) {
 
-		//nvTerres = les territoires d'origine + 1 nouveau parmi les voisins
 		nvTerres = terrains;
+		//nvTerres = les territoires d'origine + 1 nouveau parmi les voisins
 		nvTerres.ajouter(voisins[i]);
 
 		//On explore à partir de ce voisin
@@ -135,26 +131,16 @@ Tableau<Polygone> Empire::conquerir(Tableau<Polygone>& terrains, int nbT ){
 	return nvTerresResult;
 }
 
-void Empire::trierAlphabet(){
+void Empire::trierNomCarte(){
+	//On recupère la position des terrioitoires de l'empire dans la carte (soit dans 'rritoires')
 	Tableau<int> tmp;
-
 	int tmpBis;
-
-	/*for ( int i = 0 ; i < this->empire.taille() ; i+=1 ) {
-		for ( int j = i ; j < this->empire.taille() ; j+=1 ) {
-			if ( this->empire[j].getNom() < this->empire[i].getNom() )
-			{
-				tmp = this->empire[j];
-				this->empire[j] = this->empire[i];
-				this->empire[i] = tmp;
-			}
-		}
-	}*/
 
 	for ( int i = 0 ; i < this->empire.taille() ; i+=1 ) {
 		tmp.ajouter(this->territoires.trouver(this->empire[i]));
 	}
 
+	//On les ré-organise pour qu'ils apparaîssent dans le même ordre d'apparrition que la carte
 	for ( int i = 0 ; i < tmp.taille() ; i+=1 ) {
 		for ( int j = i ; j < tmp.taille() ; j+=1 ) {
 			if ( tmp[j] < tmp[i] )
@@ -166,6 +152,7 @@ void Empire::trierAlphabet(){
 		}
 	}
 
+	//Et on ré-organise donc l'empire initiale
 	this->empire.vider();
 
 	for ( int i = 0 ; i < tmp.taille() ; i+=1 ) {
@@ -173,9 +160,12 @@ void Empire::trierAlphabet(){
 	}
 }
 
+//Pour écire un empire
 std::ostream& operator<<(std::ostream& os, const Empire& emp) {
+	//On affiche la superficie
 	std::cout << round(emp.superficie()) << std::endl;
 
+	//On affiche le nom des terrioires le composant
 	for (int i = 0 ; i < emp.empire.taille() ; i+= 1 ) {
 		std::cout << emp.empire[i].getNom() << std::endl ;
 	}

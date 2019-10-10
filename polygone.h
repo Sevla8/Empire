@@ -15,19 +15,19 @@ class Polygone {
 	public:
 		//Retourne la distance minimale entre le polygone implicite et le polygone param1
 		double distance(const Polygone&) const;
-		
 		//Retourne l'aire du polygone implicite
 		double getAire() const;
 		//Retourne le nom du polygone implicite
 		std::string getNom() const;
+
 	private:
 		//calcul l'aire
 		void definirAire();
-		
+		//Nom du polygone
 		std::string nom;
 		//Tableau dynamique listant les sommets du polygone implicite
 		Tableau<Point> sommets;
-
+		//Aire du polygone
 		double aire;
 
 	//Surcharge des opérateurs >> et <<

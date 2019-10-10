@@ -2,8 +2,8 @@
 # Adaptez ce fichier au besoin (si vous ajouter des fichiers).
 #
 # Choisir l'une des deux configurations (-g: Debug | -O2: Release)
-OPTIONS = -g -O0 -Wall
-#OPTIONS = -O2 -Wall
+#OPTIONS = -g -O0 -Wall
+OPTIONS = -O2 -Wall
 
 all : tp1
 
