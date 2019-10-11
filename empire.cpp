@@ -163,11 +163,11 @@ void Empire::trierNomCarte(){
 //Pour écire un empire
 std::ostream& operator<<(std::ostream& os, const Empire& emp) {
 	//On affiche la superficie
-	std::cout << round(emp.superficie()) << std::endl;
+	os << round(emp.superficie()) << std::endl;
 
 	//On affiche le nom des terrioires le composant
 	for (int i = 0 ; i < emp.empire.taille() ; i+= 1 ) {
-		std::cout << emp.empire[i].getNom() << std::endl ;
+		os << emp.empire[i].getNom() << std::endl ;
 	}
-
+	return os;
 }
